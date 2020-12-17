@@ -3,7 +3,6 @@
 # Created on 2020/11/3 13:38
 # Project: 
 # @Author: CaoYugang
-# @Email : siqi@yscredit.com
 import torch
 import os
 import cv2
