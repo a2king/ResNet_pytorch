@@ -54,7 +54,7 @@ class CNNNetworkDataset(Dataset):
 # 准备数据集并预处理
 transform_train = transforms.Compose([
     transforms.Resize((config["width"], config["height"])),
-    transforms.RandomHorizontalFlip(),  # 图像一半的概率翻转，一半的概率不翻转
+    transforms.RandomHorizontalFlip(0.5 if config["train"]["rotating"] else 0),  # 0.5=>图像一半的概率翻转，一半的概率不翻转
     transforms.ToTensor(),  # 维度转化
 ])
 

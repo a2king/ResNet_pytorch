@@ -7,12 +7,13 @@ train:
   epoch: 135  # 遍历数据集次数
   pre_epoch: 0  # 定义已经遍历数据集的次数
   batch_size: 256  # 批处理尺寸(batch_size)
-  lr: 0.1  # 学习率
+  lr: 0.001  # 学习率
   train_data: C:/原图  # 训练集路径
   test_data: C:/原图  # 训练集路径
   is_gpu: False  # 是否使用gpu
   num_workers: 8  # 并行处理数据进程数，根据显存大小自定义，显存越小work数越小
   out_model_path: H:/pytouch_product/ResNet/model  #  网络模型保存地址
+  rotating: False # 训练过程是否进行图片随机旋转
 test:
   model_path: H:/ProductProgram/geetest/word_resnet50/net_181.pth  # 测试所用的模型路径
   is_gpu: False  # 是否使用gpu
