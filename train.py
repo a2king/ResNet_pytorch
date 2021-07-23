@@ -105,8 +105,8 @@ optimizer = optim.SGD(net.parameters(), lr=config["train"]["lr"], momentum=0.9,
 
 # 训练
 if __name__ == "__main__":
-    best_acc = 85  # 2 初始化best test accuracy
-    print("Start Training, Resnet-18!")  # 定义遍历数据集的次数
+    best_acc = 90  # 2 初始化best test accuracy
+    print("Start Training, %s !" % config["net"])  # 定义遍历数据集的次数
     for epoch in range(config["train"]["pre_epoch"], config["train"]["epoch"]):  # 从先前次数开始训练
         print('\nEpoch: %d' % (epoch + 1))  # 输出当前次数
         net.train()  # 这两个函数只要适用于Dropout与BatchNormalization的网络，会影响到训练过程中这两者的参数
@@ -158,9 +158,10 @@ if __name__ == "__main__":
             acc = 100. * correct / total
             # 将每次测试结果实时写入acc.txt文件中
             print('Saving model......')
-            torch.save(net.state_dict(), '%s/net_%03d.pth' % (config["train"]["out_model_path"], epoch + 1))
+            torch.save(net.state_dict(), '%s/net_%d_%03d.pth' % (config["train"]["out_model_path"], epoch + 1, acc))
 
             # 记录最佳测试分类准确率并写入best_acc.txt文件中
             if acc > best_acc:
                 best_acc = acc
+                torch.save(net.state_dict(), '%s/best_net_%03d.pth' % (config["train"]["out_model_path"], best_acc))
     print("Training Finished, TotalEPOCH=%d" % config["train"]["epoch"])
