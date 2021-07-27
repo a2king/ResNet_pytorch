@@ -29,6 +29,9 @@ test:
 
 ## 训练
 ```python
+# split_dataset.py
+# 该文件可对数据集进行测试集和训练集拆分 
+
 # 修改配置文件config.yaml后运行train.py脚本即可
 python3 train.py
 ```
